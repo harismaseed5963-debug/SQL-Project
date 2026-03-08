@@ -140,8 +140,12 @@ ADD COLUMN grade Varchar(5);
 
 
 --Update the grade to 'A' for those whose salary is greater than 70000,& 'B' for the rest
-
-
+UPDATE employees
+SET grade = 
+CASE
+    WHEN salary > 70000 THEN 'A'
+    ELSE 'B'
+END;
 
 
 -- Delete all employees whose experience is less than 2 years
@@ -208,7 +212,10 @@ From employees
 Group By gender;
 
 -- Display only those departments where the average salary is greater than 60,000.
-
+SELECT departments, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY departments
+HAVING AVG(salary) > 60000;ments:
 
 
 
